@@ -1,0 +1,26 @@
+name: Auto Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Installing Node
+      uses: actions/setup-node@ve-beta
+      with: 
+        version: 12
+      
+    - name: Installing Surge
+      run: npm install --global surge
+      
+    - name: Deploying Surge
+      run: surge./quaid_tribute.surge.sh --token $ {{secrets.TRIBUTE_TOKEN}}

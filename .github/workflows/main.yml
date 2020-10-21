@@ -31,4 +31,4 @@ jobs:
         run: npm install --global surge
         
       - name: deploy procedure
-        run: surge ./ tribute_to_quaid.surge.sh --token ${{secrets.SURGE_TOKEN}}
+        run: surge ./tribute_to_quaid.surge.sh --token ${{secrets.SURGE_TOKEN}}
